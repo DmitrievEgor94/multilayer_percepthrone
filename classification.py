@@ -301,7 +301,6 @@ if __name__ == '__main__':
 
     net = MLPClassification((num_atrs, (num_atrs + outputs_num)//2, outputs_num))
 
-    print(23)
     epoch_number = 10
 
     for _ in range(epoch_number):

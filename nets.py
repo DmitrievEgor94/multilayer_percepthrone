@@ -17,6 +17,7 @@ class MLPClassification:
 
         for i in range(len(network_shape)):
             if i == 0:
+                # добавляем 1 для весов смещения
                 self.layers.append(np.zeros(network_shape[i] + 1))
             else:
                 self.layers.append(np.zeros(network_shape[i]))
@@ -27,7 +28,6 @@ class MLPClassification:
         for i in range(len(network_shape) - 1):
             # сделаем инициализацию Ксавьера https://pytorch.org/docs/stable/nn.init.html?highlight=xavier#torch.nn.init.xavier_uniform_
             bound = (6 / (self.layers[i].size + self.layers[i + 1].size)) ** (1 / 2)
-            # добавляем 1 для весов смещения
             self.weights.append(np.random.uniform(-bound, bound, (self.layers[i].size, self.layers[i + 1].size)))
 
         # для метода моментов сохраняем предыдущие производные
